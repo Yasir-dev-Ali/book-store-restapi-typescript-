@@ -16,9 +16,9 @@ const uploads=multer({
 
     limits: { fileSize: 5 * 1024 * 1024 }, // Limit file size to 5MB
     fileFilter: (req, file, cb) => {
-        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'application/pdf'];
         if (!allowedTypes.includes(file.mimetype)) {
-            return cb(new Error('Only .jpeg, .png, and .gif files are allowed'));
+            return cb(new Error('Only .jpeg, .png, .gif, and .pdf files are allowed'));
         }
         cb(null, true);
     }
@@ -27,7 +27,10 @@ const uploads=multer({
 
 
 
-bookRouter.post('/books', uploads.fields([
+bookRouter.post('/createBook', uploads.fields([
     { name: 'coverImage', maxCount: 1 },
     { name: 'filePath', maxCount: 1 }
 ]), createBook);
+
+
+export default bookRouter;

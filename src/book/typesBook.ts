@@ -5,11 +5,12 @@ export interface Book {
     title: string;
     author: User;
     coverImage: string;
-    price: number;
+    price: string;
     publishedDate: Date;
     description: string;
     category: string;
     stock: number;
+    uploader: User;
     filePath: string;
     createdAt?: Date;
     updatedAt?: Date;
